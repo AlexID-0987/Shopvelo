@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Shopvelo.Models.Bake>
+
+<div>
+    @Html.ActionLink("Create" , "Create", "Admin", null, new { @class="btn btn-primary"})
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Time</th>
+            <th>Price</th>
+            <th>Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ba in Model)
+            {
+            <tr>
+                <td>@ba.Name</td>
+                <td>@ba.Model</td>
+                <td>@ba.Color</td>
+                <td>@ba.DateTime</td>
+                <td>@ba.Price</td>
+                <th>
+                    <div style="width:50px; height:50px">
+                        <img src=@ba.Foto style="width:100%; border-radius:0.5em" />
+                    </div>
+                </th>
+                </tr>
+
+
+            }
+    </tbody>
+</table>
