@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Shopvelo.Models.Bake>
+@{
+    Layout = "_Layout";
+            }
+
+
+     @if(ViewBag.Thanks !=null)
+            {
+                <div class="display-1" style="color:red;">@ViewBag.Thanks</div>
+            }
+    <h2>Bakes</h2>
+    <table class="table" style="background-color:white">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Time</th>
+                <th>Price</th>
+                <th>Foto</th>
+                <th></th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mybake in Model)
+            {
+            <tr>
+                <td>@mybake.Name</td>
+                <td>@mybake.Model</td>
+                <td>@mybake.Color</td>
+                <td>@mybake.DateTime</td>
+                <td>@mybake.Price</td>
+                <th>
+                    <div style="width:50px; height:50px">
+                        <img src=@mybake.Foto style="width:100%" />
+                    </div>
+                </th>
+                <th><a href="~/Home/Buy/@mybake.BakeId" class="btn btn-primary">Buy</a></th>
+
+
+            </tr>
+            }
+        </tbody>
+    </table>
