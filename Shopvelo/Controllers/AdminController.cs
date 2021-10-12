@@ -20,5 +20,16 @@ namespace Shopvelo.Controllers
         {
             return View(context.Bakes.ToList());
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Bake bake)
+        {
+            context.Bakes.Add(bake);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
