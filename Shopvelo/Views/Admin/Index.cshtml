@@ -12,6 +12,7 @@
             <th>Time</th>
             <th>Price</th>
             <th>Foto</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -21,13 +22,19 @@
                 <td>@ba.Name</td>
                 <td>@ba.Model</td>
                 <td>@ba.Color</td>
-                <td>@ba.DateTime</td>
+                <td>@(DateTime.Now)</td>
                 <td>@ba.Price</td>
                 <th>
                     <div style="width:50px; height:50px">
                         <img src=@ba.Foto style="width:100%; border-radius:0.5em" />
                     </div>
                 </th>
+                <td>
+                    <form method="post" action="~/Admin/Delete">
+                        <input type="hidden" name="bakeid" value="@ba.BakeId" />
+                        <input type="submit" class="btn btn-danger" value="Delete" />
+                    </form>
+                </td>
                 </tr>
 
 

@@ -31,5 +31,13 @@ namespace Shopvelo.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult Delete(int bakeid)
+        {
+            var bakeDelete = context.Bakes.Find(bakeid);
+            context.Bakes.Remove(bakeDelete);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
