@@ -1,12 +1,39 @@
 ﻿@model Shopvelo.Models.Bake
 
-    <form method="post" style="text-align:center">
-        <div>
+<form method="post" style="text-align:center">
+    @*<div>
             <label for="name">Name</label>
             <p></p>
             <input id="name" type="text" style="width:300px" name="Name"/>
-        </div>
-        <div>
+        </div>*@
+    @Html.HiddenFor(x => x.BakeId)
+    <div>
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Model)
+        @Html.TextBoxFor(x => x.Model)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Color)
+        @Html.TextBoxFor(x => x.Color)
+    </div>
+    <div>
+        @Html.LabelFor(x => System.DateTime.Now)
+        @Html.TextBoxFor(x => System.DateTime.Now)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Price)
+        @Html.TextBoxFor(x => x.Price)
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.Foto)
+        @Html.TextBoxFor(x => x.Foto)
+    </div>
+    
+    @*<div>
             <label for="model">Model</label>
             <p></p>
             <input id="model" type="text" style="width:300px" name="Model" />
@@ -16,17 +43,18 @@
             <p></p>
             <input id="color" type="text" style="width:300px" name="Color" />
         </div>
-        
+
         <div>
             <label for="price">Price</label>
             <p></p>
-            <input id="price" type="text" style="width:300px" name="Price"/>
+            <input id="price" type="text" style="width:300px" name="Price" />
         </div>
         <div>
             <label for="foto">Foto</label>
             <p></p>
-            <input id="foto" type="text" style="width:300px" name="Foto"/>
+            <input id="foto" type="text" style="width:300px" name="Foto" />
         </div>
-        <p></p>
-        <input type="submit" value="Save" style="width:300px; background-color:chocolate" />
-    </form> 
+    *@
+    <p></p>
+    <input type="submit" value="Save" style="width:300px; background-color:chocolate" />
+</form> 

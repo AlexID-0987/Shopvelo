@@ -20,14 +20,30 @@ namespace Shopvelo.Controllers
         {
             return View(context.Bakes.ToList());
         }
-        public IActionResult Create()
+
+        public IActionResult Create(int? bakeId)
         {
-            return View();
+            if (bakeId == null)
+            {
+                return View();
+            }
+            else
+            {
+                return View(context.Bakes.FirstOrDefault(x => x.BakeId == bakeId));
+            }
         }
         [HttpPost]
         public IActionResult Create(Bake bake)
         {
-            context.Bakes.Add(bake);
+            if(bake.BakeId==0)
+            {
+                context.Bakes.Add(bake);
+            }
+            else
+            {
+                context.Update(bake);
+            }
+            
             context.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -12,30 +12,35 @@
             <th>Time</th>
             <th>Price</th>
             <th>Foto</th>
+            <th>Edit</th>
             <th>Delete</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var ba in Model)
             {
-            <tr>
-                <td>@ba.Name</td>
-                <td>@ba.Model</td>
-                <td>@ba.Color</td>
-                <td>@(DateTime.Now)</td>
-                <td>@ba.Price</td>
-                <th>
-                    <div style="width:50px; height:50px">
-                        <img src=@ba.Foto style="width:100%; border-radius:0.5em" />
-                    </div>
-                </th>
-                <td>
-                    <form method="post" action="~/Admin/Delete">
-                        <input type="hidden" name="bakeid" value="@ba.BakeId" />
-                        <input type="submit" class="btn btn-danger" value="Delete" />
-                    </form>
-                </td>
-                </tr>
+        <tr>
+            <td>@ba.Name</td>
+            <td>@ba.Model</td>
+            <td>@ba.Color</td>
+            <td>@System.DateTime.Now</td>
+            <td>@ba.Price</td>
+            <th>
+                <div style="width:50px; height:50px">
+                    <img src=@ba.Foto style="width:100%; border-radius:0.5em" />
+                </div>
+            </th>
+            <td>
+                <a asp-controller="Admin" asp-action="Create" asp-route-bakeId="@ba.BakeId" class="btn btn-light">Edit</a>
+            </td>
+
+            <td>
+                <form method="post" action="~/Admin/Delete">
+                    <input type="hidden" name="bakeid" value="@ba.BakeId" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                </form>
+            </td>
+        </tr>
 
 
             }
