@@ -32,9 +32,17 @@ namespace Shopvelo.Controllers
         [HttpPost]
         public IActionResult Buy(Order order)
         {
-            bakecontext.Orders.Add(order);
-            bakecontext.SaveChanges();
-            return RedirectToAction("Index", new { st="Thanks frends"});
+            if (ModelState.IsValid)
+            {
+                bakecontext.Orders.Add(order);
+                bakecontext.SaveChanges();
+                return RedirectToAction("Index", new { st = "Thanks frends" });
+            }
+            else
+            {
+                return View(order);
+            }
+            
         }
     }
 }
