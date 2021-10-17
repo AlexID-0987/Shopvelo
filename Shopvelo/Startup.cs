@@ -42,9 +42,8 @@ namespace Shopvelo
                 endpoints.MapControllerRoute(
                     name:"Default",
                     pattern:"{controller=Home}/{action=Index}/{id?}"
-
-
                     );
+                endpoints.MapControllers();
             });
         }
     }
