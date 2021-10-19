@@ -42,7 +42,15 @@
                         }
                     </style>
                 </th>
-                <th><a href="~/Home/Buy/@mybake.BakeId" class="btn btn-primary">Buy</a></th>
+                <td><a href="~/Home/Buy/@mybake.BakeId" class="btn btn-primary">Buy</a></td>
+                <td>
+                    @using (Html.BeginForm("AddToBake","Bake"))
+                {
+                    <input type="hidden" value="@mybake.BakeId" name="BakeId" />
+                    @Html.Hidden("returnUrl", Context.Request.Path)
+                        <input type="submit" value="+Add to Bake" class="btn btn-primary" />
+                }
+                </td>
 
 
             </tr>
