@@ -1,0 +1,33 @@
+﻿@model Shopvelo.Models.ViewModel.CartIndexViewModel
+
+<h1>Cart</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Qantity</th>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach( var line in Model.Cart.Lines)
+            {
+                <tr>
+                    <td>@line.Quantity</td>
+                    <td>@line.Bake.Name</td>
+                    <td>@line.Bake.Model</td>
+                    <td>@line.Bake.Price</td>
+                    <td>@(line.Quantity*line.Bake.Price)</td>
+                </tr>
+            }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total:</td>
+            <td>@Model.Cart.ComputeTotalValue()</td>
+        </tr>
+    </tfoot>
+</table>
+<a href="@Model.ReturnUrl" class="btn btn-primary">Continue</a>

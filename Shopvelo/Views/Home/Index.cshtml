@@ -44,11 +44,11 @@
                 </th>
                 <td><a href="~/Home/Buy/@mybake.BakeId" class="btn btn-primary">Buy</a></td>
                 <td>
-                    @using (Html.BeginForm("AddToBake","Bake"))
+                    @using (Html.BeginForm("AddToCart","Cart"))
                 {
                     <input type="hidden" value="@mybake.BakeId" name="BakeId" />
                     @Html.Hidden("returnUrl", Context.Request.Path)
-                        <input type="submit" value="+Add to Bake" class="btn btn-primary" />
+                        <input type="submit" value="+Add to Cart" class="btn btn-primary" />
                 }
                 </td>
 
