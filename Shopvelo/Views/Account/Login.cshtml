@@ -1,0 +1,22 @@
+﻿@model Shopvelo.Models.ViewModel.loginViewModel
+
+<h2>Login</h2>
+<a asp-controller="Account" asp-action="Register" class="btn btn-primary">Register</a>
+<form asp-action="Login" asp-controller="Account" asp-antiforgery="true">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div style="text-align:center">
+        <div>
+            @Html.LabelFor(x => x.Email)
+            <p></p>
+            @Html.TextBoxFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Password)
+            <p></p>
+            @Html.PasswordFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary" />
+    </div>
+</form>

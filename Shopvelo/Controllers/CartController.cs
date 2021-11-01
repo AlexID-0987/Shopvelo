@@ -48,7 +48,7 @@ namespace Shopvelo.Controllers
                 HttpContext.Session.SetObjectAsJson("Cart", cart);
 
             }
-            return RedirectToAction("Index",new {returnUrl});
+            return RedirectToAction("Index",new {returnUrl}); 
         }
         private Cart GetCart()
         {
