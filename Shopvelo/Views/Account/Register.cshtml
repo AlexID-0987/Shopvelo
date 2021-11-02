@@ -1,0 +1,28 @@
+﻿@model Shopvelo.Models.ViewModel.RegisterViewModel
+
+<h2>Regisration</h2>
+
+<form asp-action="Register" asp-controller="Account" asp-antiforgery="true">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div style="text-align:center">
+        <div>
+            @Html.LabelFor(x => x.Email)
+            <p></p>
+            @Html.TextBoxFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Password)
+            <p></p>
+            @Html.PasswordFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.ConfirmPassword)
+            <p></p>
+            @Html.PasswordFor(x => x.ConfirmPassword)
+            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+        </div>
+        <input type="submit" value="Registration" class="btn btn-primary" />
+    </div>
+</form>

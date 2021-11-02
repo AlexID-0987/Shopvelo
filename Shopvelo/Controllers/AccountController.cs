@@ -36,7 +36,7 @@ namespace Shopvelo.Controllers
                 if(user !=null)
                 {
                     await Authenticate(user);
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError(" ", "Invalid email");
             }
@@ -55,6 +55,42 @@ namespace Shopvelo.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(id));
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register (RegisterViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                User user = await context.Users.FirstOrDefaultAsync(x => x.Email == model.Email);
+                if(user==null)
+                {
+                    user = new User { Email = model.Email, Password = model.Password };
+                    Role userRole = await context.Roles.FirstOrDefaultAsync(x => x.Name == "user");
+                    if(userRole!=null)
+                    {
+                        user.Role = userRole;
+                    }
+                    context.Users.Add(user);
+                    await context.SaveChangesAsync();
+                    await Authenticate(user);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "User already");
+                }
+            }
+            return View(model);
+        }
+        public async Task <IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
