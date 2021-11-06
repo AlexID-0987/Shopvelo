@@ -12,6 +12,12 @@
             @Html.ValidationMessageFor(x => x.Email)
         </div>
         <div>
+            @Html.LabelFor(x => x.Year)
+            <p></p>
+            @Html.TextBoxFor(x => x.Year)
+            @Html.ValidationMessageFor(x => x.Year)
+        </div>
+        <div>
             @Html.LabelFor(x => x.Password)
             <p></p>
             @Html.PasswordFor(x => x.Password)

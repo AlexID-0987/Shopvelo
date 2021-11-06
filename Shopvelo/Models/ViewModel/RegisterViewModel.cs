@@ -11,6 +11,8 @@ namespace Shopvelo.Models.ViewModel
         [Required]
         public string Email { get; set; }
         [Required]
+        public int Year { get; set; }
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [DataType(DataType.Password)]

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,12 +26,9 @@ namespace Shopvelo
         {
             services.AddDbContext<Bakecontext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-                {
-                    options.LoginPath = new PathString("/Account/Login");
-                    options.AccessDeniedPath = new PathString("/Account/Login");
-                });
+            services.AddDbContext<IdentityContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("IdentytiConnection")));
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
             services.AddMvc();
             services.AddSession();
         }
